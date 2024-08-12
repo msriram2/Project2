@@ -97,8 +97,26 @@ class DictTuple:
                 else:
                     return False
 
-    #def proper method so that d[k] will return value associated
-    # with latest dictionary
+    def __getitem__(self, k):
+        for dicts in self.dt:
+            for key, value in dicts:
+                if key == k:
+                    #Goal here is to return the value in the most recent index.
+                    #Look for approach
+                    return value if
+
+    def __setitem__(self, k, v):
+        #Double check and see if self.dt is even a list
+        for dicts in self.dt:
+            for key, value in dicts:
+                if key == k:
+                    dicts[key] = v
+                if key != k:
+                    new_dict = {}
+                    new_dict[k] = v
+                    self.dt.append(new_dict)
+
+
 
     def __iter__(self):
         pass
