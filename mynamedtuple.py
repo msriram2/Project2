@@ -88,8 +88,14 @@ class DictTuple:
         #Review string representation
         return "DictTuple(" + self.dt.join()+  ")"
 
-    def __contains__(self, **kwargs):
-        pass
+    def __contains__(self, kwarg):
+        #Again, check formatting
+        for dicts in self.dt:
+            for key, value in dicts:
+                if key == kwarg:
+                    return True
+                else:
+                    return False
 
     #def proper method so that d[k] will return value associated
     # with latest dictionary
