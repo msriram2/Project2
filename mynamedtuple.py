@@ -4,6 +4,15 @@ from keyword import kwlist
 
 def mynamedtuple(type_name, field_names, mutable=False, defaults={}):
     """
+    GOAL: The goal of this function is to dynamically generate and simulate a namedtuple by dynamically generating classes
+    with the exec() function.
+
+    WHAT TO KNOW:
+    - How to dynamically generate classes
+    - How do namedtuples work?
+    - How does the exec() function work?
+
+
     Questions:
     1) How to get variable name to equal type_name without using collections
     2) How to make sure the program is able to maintain the sequence of the code in field_names?
@@ -42,59 +51,32 @@ def mynamedtuple(type_name, field_names, mutable=False, defaults={}):
         Class = mynamedtuple(f'{type_name}', new_fields, mutable, defaults)
         #There's the potential of having to include a generator function. Figure out how to integrate that.
 
-class coordinate:
-    """
-    Objective:
-
-    """
-    _fields = ['x', 'y']
-    _mutable = False
-
-    def __init__(self, x, y=0):
-        self.x = x
-        self.y = y
-
-    #NOTE: Will have to do a string manipulation?
-    #NOTE: Consider difference between (x,y) and (y, x) in context
-    # of instances
-
-    def __repr__(self) -> str:
-        return 'coordinate('+ ('x='+ self.x, 'y='+ self.y) + ')'
-        #Find a way to rewrite this equation with the join. statement
-    def get_x(self):
-        return self.x
-
-    def get_y(self):
-        return self.y
-
-    #Overloading proper method to overload indexing operator
-
-    def __eq__(self):
-        pass
-
-    def _asdict(self):
-        pass
-
-    def _make(self, iter):
-        pass
-    def _replace(self, **kwargs):
-        pass
-
-    def __setattr__(self):
-        pass
-
-
 class DictTuple:
+    """
+    Goal: Ones the tuples are created by the mynamedtuples generative function, the goal of DictTuple is to store
+    these namedtuples using keys and support operator overloading.
 
-    def __init__(self, *args):
-        self.arg = args
+    WHAT TO KNOW:
+    - Review operator overloading
+    """
 
-    def arg_exists(self):
-        if self.args == None:
-            raise AssertionError('DictTuple.__init__:' + self.args + ' is not a dictionary')
+    def __init__(self, *args:dict):
+        for arg in args:
+            if arg == None:
+                raise AssertionError('There are no dictionary arguments.')
+            if type(arg) is not dict:
+                raise AssertionError('One ore more arguments is not a dictionary.')
+            if arg == "":
+                raise AssertionError("One or more dictionaries are empty.")
+        else:
+            self.dt = args
 
     def __len__(self):
-        pass
+        num_of_keys = 0
+        for i in range(len(self.dt)):
+            for j in range(len(self.dt)):
+                if i != j:
+                    num_of_keys += 1
 
     def __bool__(self):
         pass
