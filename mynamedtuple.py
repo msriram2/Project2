@@ -79,10 +79,14 @@ class DictTuple:
                     num_of_keys += 1
 
     def __bool__(self):
-        pass
+        if len(self.dt) == 1:
+            return False
+        if len(self.dt) > 1:
+            return True
 
     def __repr__(self):
-        pass
+        #Review string representation
+        return "DictTuple(" + self.dt.join()+  ")"
 
     def __contains__(self, **kwargs):
         pass
