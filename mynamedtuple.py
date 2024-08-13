@@ -51,75 +51,11 @@ def mynamedtuple(type_name, field_names, mutable=False, defaults={}):
         Class = mynamedtuple(f'{type_name}', new_fields, mutable, defaults)
         #There's the potential of having to include a generator function. Figure out how to integrate that.
 
-class DictTuple:
-    """
-    Goal: Ones the tuples are created by the mynamedtuples generative function, the goal of DictTuple is to store
-    these namedtuples using keys and support operator overloading.
-
-    WHAT TO KNOW:
-    - Review operator overloading
-    """
-
-    def __init__(self, *args:dict):
-        for arg in args:
-            if arg == None:
-                raise AssertionError('There are no dictionary arguments.')
-            if type(arg) is not dict:
-                raise AssertionError('One ore more arguments is not a dictionary.')
-            if arg == "":
-                raise AssertionError("One or more dictionaries are empty.")
-        else:
-            self.dt = args
-
-    def __len__(self):
-        num_of_keys = 0
-        for i in range(len(self.dt)):
-            for j in range(len(self.dt)):
-                if i != j:
-                    num_of_keys += 1
-
-    def __bool__(self):
-        if len(self.dt) == 1:
-            return False
-        if len(self.dt) > 1:
-            return True
-
-    def __repr__(self):
-        #Review string representation
-        return "DictTuple(" + self.dt.join()+  ")"
-
-    def __contains__(self, kwarg):
-        #Again, check formatting
-        for dicts in self.dt:
-            for key, value in dicts:
-                if key == kwarg:
-                    return True
-                else:
-                    return False
-
-    def __getitem__(self, k):
-        for dicts in self.dt:
-            for key, value in dicts:
-                if key == k:
-                    #Goal here is to return the value in the most recent index.
-                    #Look for approach
-                    return value if
-
-    def __setitem__(self, k, v):
-        #Double check and see if self.dt is even a list
-        for dicts in self.dt:
-            for key, value in dicts:
-                if key == k:
-                    dicts[key] = v
-                if key != k:
-                    new_dict = {}
-                    new_dict[k] = v
-                    self.dt.append(new_dict)
 
 
 
-    def __iter__(self):
-        pass
+
+
 
 
 
