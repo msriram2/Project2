@@ -33,6 +33,8 @@ def mynamedtuple(type_name, field_names, mutable=False, defaults={}):
         new_fields = filter(dup, field_names)
         Class = mynamedtuple(f'{type_name}', new_fields, mutable, defaults)
 
+        yield Class
+
 
 
 
