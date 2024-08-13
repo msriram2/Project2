@@ -37,10 +37,9 @@ class DictTuple:
         return "DictTuple({})".format(dict for dict in self.dt)
 
     def __contains__(self, kwarg):
-        #Again, check formatting
         for dicts in self.dt:
-            for key, value in dicts:
-                if key == kwarg:
+            for key in dicts:
+                if key[-1:] == kwarg:
                     return True
                 else:
                     return False
@@ -48,16 +47,13 @@ class DictTuple:
     def __getitem__(self, k):
         for dicts in self.dt:
             for key, value in dicts:
-                if key == k:
-                    #Goal here is to return the value in the most recent index.
-                    #Look for approach
-                    return value if
+                if key[-1:]== k:
+                    return value
 
     def __setitem__(self, k, v):
-        #Double check and see if self.dt is even a list
         for dicts in self.dt:
             for key, value in dicts:
-                if key == k:
+                if key[-1] == k:
                     dicts[key] = v
                 if key != k:
                     new_dict = {}
@@ -83,12 +79,10 @@ class DictTuple:
                     return ['']
 
     def __iter__(self):
-        #Similar to the first proper method for returning the key in the most recent index. Figure that out.
-
-    def __eq__(self, d2):
-        d1 = self.dt
-        for k1, v1 in self.dt:
-            for k2, v2 in d2:
-                if k1 == k2:
-                    #How to tell if all keys are equal?
-    def __setattr__(self):
+        sorted_keys = []
+        for dicts in self.dt:
+            for key in dicts:
+                sorted_keys.append(key[-1])
+        sorted_keys = list(set(sorted_keys))
+        new_sorted_keys = reversed(sorted(sorted_keys))
+        return new_sorted_keys
