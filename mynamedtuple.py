@@ -1,6 +1,6 @@
 #DO NOT USE COLLECTIONS
 from keyword import kwlist
-
+from DictTuple import DictTuple
 
 def mynamedtuple(type_name, field_names, mutable=False, defaults={}):
     """
@@ -36,8 +36,9 @@ def mynamedtuple(type_name, field_names, mutable=False, defaults={}):
         yield Class
 
 
-
-
+if __name__ == '__main__':
+    classes = mynamedtuple()
+    Tuple = DictTuple(classes)
 
 
 
