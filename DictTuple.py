@@ -34,9 +34,9 @@ class DictTuple:
             return True
 
     def __repr__(self):
-        return "DictTuple({})".format(dict for dict in self.dt)
+        return "DictTuple(" + ','.join(str(dicts) for dicts in self.dt) + ")"
 
-    def __contains__(self, kwarg):
+    def __contains__(self, kwarg): #Contains is wrong can't hash key with negative index.
         for dicts in self.dt:
             for key in dicts:
                 if key[-1:] == kwarg:
@@ -68,7 +68,7 @@ class DictTuple:
                 if key != k:
                     raise KeyError('Cannot find key in any dictionary')
 
-    def __enter__(self, k):
+    def __enter__(self, k): #No need to do enter
         key_list = []
         for dict in self.dt:
             for key, value in dict:
@@ -77,6 +77,11 @@ class DictTuple:
                     return key_list
                 else:
                     return ['']
+
+    """Reason for not passing: Didn't follow instructions. Don't focus on mynamedtuple. Focus on DictTuple. Easier than 
+    mynamedtuple. Use project guide to see if there anything wrong with each method. Use dunder methods (required). Use 
+    the testcase provided to test your code. When looking at proper methods, search up what dunder method best fits the 
+    task."""
 
     def __iter__(self):
         sorted_keys = []
@@ -87,5 +92,3 @@ class DictTuple:
         new_sorted_keys = reversed(sorted(sorted_keys))
         return new_sorted_keys
 
-if __name__ == '__main__':
-    Tuple = DictTuple()

@@ -35,9 +35,6 @@ def mynamedtuple(type_name, field_names, mutable=False, defaults={}):
         yield Class
 
 
-if __name__ == '__main__':
-    classes = mynamedtuple()
-
 
 
 
