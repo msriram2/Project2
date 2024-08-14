@@ -60,13 +60,14 @@ class DictTuple:
                     new_dict[k] = v
                     self.dt.append(new_dict)
 
-    def __del__(self, k):
+    """def __del__(self, k):
         for dict in self.dt:
             for key, value in dict:
                 if key == k:
                     self.dt.remove(key)
                 if key != k:
                     raise KeyError('Cannot find key in any dictionary')
+    """
 
     def __enter__(self, k): #No need to do enter
         key_list = []
