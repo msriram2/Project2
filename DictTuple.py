@@ -86,3 +86,6 @@ class DictTuple:
         sorted_keys = list(set(sorted_keys))
         new_sorted_keys = reversed(sorted(sorted_keys))
         return new_sorted_keys
+
+if __name__ == '__main__':
+    Tuple = DictTuple()
