@@ -33,11 +33,11 @@ class DictTuple:
         if len(self.dt) > 1:
             return True
 
-    def __repr__(self): #Fix represent. Seems to be TypeError that's setting off the autograder.
+    def __repr__(self):
         return "DictTuple(" + ','.join(str(dicts) for dicts in self.dt) + ")"
 
     def __contains__(self, item):
-        return any(key == item for key in dict for dict in self.dt)
+        return any(key == item for dicts in self.dt for key in dicts)
 
     def __getitem__(self, k):
         for dicts in self.dt:
