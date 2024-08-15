@@ -33,16 +33,11 @@ class DictTuple:
         if len(self.dt) > 1:
             return True
 
-    def __repr__(self):
+    def __repr__(self): #Fix represent. Seems to be TypeError that's setting off the autograder.
         return "DictTuple(" + ','.join(str(dicts) for dicts in self.dt) + ")"
 
-    def __contains__(self, kwarg): #Contains is wrong can't hash key with negative index.
-        for dicts in self.dt:
-            for key in dicts:
-                if key[-1:] == kwarg:
-                    return True
-                else:
-                    return False
+    def __contains__(self, item):
+        return any(key == item for key in dict for dict in self.dt)
 
     def __getitem__(self, k):
         for dicts in self.dt:
@@ -60,14 +55,13 @@ class DictTuple:
                     new_dict[k] = v
                     self.dt.append(new_dict)
 
-    """def __del__(self, k):
+    def __del__(self, k):
         for dict in self.dt:
             for key, value in dict:
                 if key == k:
                     self.dt.remove(key)
                 if key != k:
                     raise KeyError('Cannot find key in any dictionary')
-    """
 
     def __enter__(self, k): #No need to do enter
         key_list = []
