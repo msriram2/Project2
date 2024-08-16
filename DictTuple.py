@@ -80,6 +80,6 @@ class DictTuple:
             for key in dicts:
                 sorted_keys.append(key[-1])
         sorted_keys = list(set(sorted_keys))
-        new_sorted_keys = reversed(sorted(sorted_keys))
+        new_sorted_keys = sorted(sorted_keys)
         return new_sorted_keys
 
