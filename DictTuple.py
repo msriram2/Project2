@@ -9,13 +9,14 @@ class DictTuple:
     def __init__(self, *args:dict):
         for arg in args:
             if arg == None:
-                raise AssertionError('There are no dictionary arguments.')
-            if type(arg) is not dict:
-                raise AssertionError('One ore more arguments is not a dictionary.')
+                raise AssertionError()
+            if type(arg) != dict:
+                raise AssertionError()
             if arg == "":
-                raise AssertionError("One or more dictionaries are empty.")
+                raise AssertionError()
         else:
             self.dt = args
+            print(self.dt)
 
     def __len__(self):
         key_list = []
@@ -40,9 +41,10 @@ class DictTuple:
         return any(key == item for dicts in self.dt for key in dicts)
 
     def __getitem__(self, k):
-        for key, value in self.dt:
-            if key[-1:] == k:
-                return value
+        for dicts in self.dt:
+            for key, value in dicts:
+                if key[-1:] == k:
+                    return key
 
     def __setitem__(self, k, v):
         for dicts in self.dt:
@@ -62,7 +64,7 @@ class DictTuple:
                 if key != k:
                     raise KeyError('Cannot find key in any dictionary')
 
-    def __enter__(self, k): #No need to do enter
+    def __enter__(self, k):
         key_list = []
         for dict in self.dt:
             for key, value in dict:
