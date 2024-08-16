@@ -15,7 +15,7 @@ class DictTuple:
             if arg == "":
                 raise AssertionError("One or more dictionaries are empty.")
         else:
-            self.dt = [args]
+            self.dt = args
 
     def __len__(self):
         key_list = []
@@ -42,7 +42,7 @@ class DictTuple:
     def __getitem__(self, k):
         for dicts in self.dt:
             for key, value in dicts:
-                if key[-1:]== k:
+                if key[-1:] == k:
                     return value
 
     def __setitem__(self, k, v):
@@ -72,11 +72,6 @@ class DictTuple:
                     return key_list
                 else:
                     return ['']
-
-    """Reason for not passing: Didn't follow instructions. Don't focus on mynamedtuple. Focus on DictTuple. Easier than 
-    mynamedtuple. Use project guide to see if there anything wrong with each method. Use dunder methods (required). Use 
-    the testcase provided to test your code. When looking at proper methods, search up what dunder method best fits the 
-    task."""
 
     def __iter__(self):
         sorted_keys = []
