@@ -40,10 +40,9 @@ class DictTuple:
         return any(key == item for dicts in self.dt for key in dicts)
 
     def __getitem__(self, k):
-        for dicts in self.dt:
-            for key, value in dicts:
-                if key[-1:] == k:
-                    return value
+        for key, value in self.dt:
+            if key[-1:] == k:
+                return value
 
     def __setitem__(self, k, v):
         for dicts in self.dt:
