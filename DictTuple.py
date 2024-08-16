@@ -8,7 +8,7 @@ class DictTuple:
 
     def __init__(self, *args:dict):
         for arg in args:
-            if arg == None:
+            if arg == ():
                 raise AssertionError()
             if type(arg) != dict:
                 raise AssertionError()
